@@ -41,7 +41,6 @@ SOFTWARE.
 #include "shadesmar/concurrency/robust_lock.h"
 #include "shadesmar/macros.h"
 #include "shadesmar/memory/allocator.h"
-#include "shadesmar/memory/tmp.h"
 
 namespace shm::memory {
 
@@ -52,9 +51,6 @@ static size_t GAP = 1024;                // 1kb safety gap
 inline uint8_t *create_memory_segment(const std::string &name, size_t size,
                                       bool *new_segment,
                                       size_t alignment = 32) {
-  std::cout << "Creating memory segment. "
-            << "Name: " << name << "; "
-            << "Size: " << size << std::endl;
   /*
    * Create a new shared memory segment. The segment is created
    * under a name. We check if an existing segment is found under
